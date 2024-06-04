@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="css/mui.min.css">
 		<!--App自定义的css-->
 		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<script src="js/vue.min.js"></script>
 		<style>
 			
 			.title{
@@ -50,7 +51,7 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a class=""></a>
-			<h1 class="mui-title">骆驼二手车</h1>
+			<h1 class="mui-title">骆驮二手车</h1>
 		</header>
 		<nav class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item mui-active" href="#tabbar">
@@ -66,22 +67,31 @@
 				<span class="mui-tab-label">联系</span>
 			</a>
 		</nav>
-		<div class="mui-content">
+		<div class="mui-content" id="app">
 			<div id="tabbar" class="mui-control-content mui-active">
 				<div class="mui-card">
-					<ul id="list" class="mui-table-view mui-table-view-chevron">
+					<ul id="list" class="mui-table-view mui-table-view-chevron" v-for="item in datalist">
 						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="2024051401/index.html">
-								2017款宝马5系525Li 领先型
+							<a class="mui-navigate-right" :href="item.url">
+								{{item.name}} ({{item.price}})
 							</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 			<div id="tabbar-with-chat" class="mui-control-content">
-				
+				<p style="margin-left: 10px; margin-top: 10px;">位置：广东省湛江市麻章区骆驮好车</p>
 			</div>
 			<div id="tabbar-with-contact" class="mui-control-content">
+				<div class="mui-card">
+					<ul id="list" class="mui-table-view mui-table-view-chevron">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="https://www.douyin.com/user/MS4wLjABAAAA_JQvvkJrqAUF4ZMShXeoqLsMlt1nwNnz8WmzhypCL6jePC8ejSsDvlRa5h1aJK6Z">
+								前往骆驮二手车抖音主页
+							</a>
+						</li>
+					</ul>
+				</div>
 				<div class="mui-card">
 					<p style="margin-top: 10px; text-align: center;">微信在线客服</p>
 					<img style="width: 100%;" src="wx.jpg"/>
@@ -90,4 +100,16 @@
 		</div>
 	</body>
 	<script src="js/mui.min.js"></script>
+	<script src="datalist.js"></script>
+	<script>
+		for (var i = 0; i < datalist.length; i++) {
+			datalist[i].url = 'item.html?' + (i+1);
+		}
+		new Vue({
+			el: '#app',
+			data: {
+				datalist: datalist
+			}
+		});
+	</script>
 </html>
