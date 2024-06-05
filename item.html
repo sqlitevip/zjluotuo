@@ -37,7 +37,7 @@
 		var item = datalist[idx];
 		item.imgs = [];
 		for (var i = 0; i < item.imgnum; i++) {
-			item.imgs.push('images/' + item.path + '/' + (i+1) + '.jpg');
+			item.imgs.push(item.path + '/' + (i+1) + '.jpg');
 		}
 		new Vue({
 			el: '#app',

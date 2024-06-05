@@ -86,15 +86,15 @@
 				<div class="mui-card">
 					<ul id="list" class="mui-table-view mui-table-view-chevron">
 						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="https://www.douyin.com/user/MS4wLjABAAAA_JQvvkJrqAUF4ZMShXeoqLsMlt1nwNnz8WmzhypCL6jePC8ejSsDvlRa5h1aJK6Z">
-								前往骆驮二手车抖音主页
+							<a class="mui-navigate-right" :href="kf.dy">
+								前往抖音主页
 							</a>
 						</li>
 					</ul>
 				</div>
 				<div class="mui-card">
 					<p style="margin-top: 10px; text-align: center;">微信在线客服</p>
-					<img style="width: 100%;" src="wx.jpg"/>
+					<img style="width: 100%;" :src="kf.wx"/>
 				</div>
 			</div>
 		</div>
@@ -105,10 +105,21 @@
 		for (var i = 0; i < datalist.length; i++) {
 			datalist[i].url = 'item.html?' + (i+1);
 		}
+		// 客服列表
+		var kfs = {
+			// 陈永明
+			cym: {wx:'wx.jpg',dy:'https://m.douyin.com/share/user/MS4wLjABAAAA_JQvvkJrqAUF4ZMShXeoqLsMlt1nwNnz8WmzhypCL6jePC8ejSsDvlRa5h1aJK6Z'},
+			// 梁明
+			lm: {wx:'wx6.jpg',dy:'https://m.douyin.com/share/user/MS4wLjABAAAA8Idtpd5FKmK6HCt7DU3FZY84GEyepNfWe9WOfQMz4ysYpflrT-sa5MPX5dWhy7_S'},
+		};
+		var kf_key = window.location.search.length > 1 ? window.location.search.slice(1): 'cym';
+		var kf = kfs[kf_key] ? kfs[kf_key] : kfs['cym'];
+		
 		new Vue({
 			el: '#app',
 			data: {
-				datalist: datalist
+				datalist: datalist,
+				kf: kf,
 			}
 		});
 	</script>
